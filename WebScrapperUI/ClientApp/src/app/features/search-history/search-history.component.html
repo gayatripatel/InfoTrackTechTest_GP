@@ -1,0 +1,25 @@
+<h1>Search History</h1>
+<div class="container">
+  <div class="card text-center">
+    <p *ngIf="!searchHistories"><em>Loading...</em></p>
+
+    <table class="table" aria-labelledby="tableLabel" *ngIf="searchHistories">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Keywords</th>
+          <th scope="col">Url</th>
+          <th scope="col">Rankings</th>
+          <th scope="col">Search Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let a of searchHistories">
+          <td>{{ a.keyWords }}</td>
+          <td>{{ a.url }}</td>
+          <td>{{ a.ranking }}</td>
+          <td>{{ a.searchDate }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

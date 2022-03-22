@@ -1,0 +1,40 @@
+<div class="jumbotron jumbotron-fluid">
+  <h1>Search</h1>
+  <div class="container">
+    <div class="card text-center">
+      <form [formGroup]="searchForm">
+        <div class="card-body">
+          <div class="input-group">
+            <input type="text" class="form-control" aria-label="Text input with dropdown button"
+              (input)="searchTextChanged($event)"
+              (blur)="searchTextChanged($event)"
+              placeholder="Start searching...." formControlName="searchText">
+            <div class="input-group-append">
+              <select class="form-control" id="frmControlButton" formControlName="searchEngineId" (input)="searchEngineChanged($event)" (blur)="searchEngineChanged($event)" >
+                <option *ngFor="let se of searchEngines" [value]="se.id">
+                  {{se.title}}
+                </option>
+              </select>
+            </div>
+          </div>
+          <a href="#" class="btn btn-primary" (click)="getRankings();">SEARCH</a>
+        </div>
+      </form>
+      <div *ngIf="searched">
+      <div class="card-footer text-muted">
+        <h1>For the search term
+          <span class="highlight">{{searchText.value}}</span>,
+          <span class="highlight">infotrack.co.uk</span>
+          <div *ngIf="rankings.length > 0;else rankingNotFound">
+             ranked in <span class="highlight">{{getCurrentSearchEngineTitle()}}</span> Results 
+             at position(s) <span class="highlight">{{rankings}}</span>
+          </div>
+          <ng-template #rankingNotFound>
+             was not found in top 100 <span class="highlight">{{getCurrentSearchEngineTitle()}}</span> Results
+          </ng-template>
+        </h1>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
