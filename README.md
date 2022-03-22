@@ -19,12 +19,15 @@ Swagger is included so the API can be tested on https://localhost:7045/swagger
 
 The Spa is implemented using latest Angular.
 
+## Tests
+Due to trying to make the imeplementation over-engineered and also adding in some extra bits, I wasn't able to add as many tests I initially hoped for but I have added some unit tests.
+
 Hope this ReadMe is good enough to see the project in action. If any issues, please let me know!
 
 Thanks!
 
 
-=========================================== SCREENSHOTs =====================================================
+============================= SCREENSHOTs ===================
 
 Homepage/Dashboard
 
