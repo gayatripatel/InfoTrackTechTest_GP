@@ -35,10 +35,6 @@ namespace WebScrapper.Core.Services
                 client.DefaultRequestHeaders.Add("User-Agent",
                     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36");
             }
-            else
-            {
-                client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36");
-            }
 
             var response = HttpUtility.HtmlDecode(await client.GetStringAsync($"{searchEngine.BaseUrl}/{searchUrl}"));
             var links = RetrieveLinksFromResponse(response, searchEngine.ResultExtractionExpression);
@@ -48,7 +44,7 @@ namespace WebScrapper.Core.Services
 
         public List<string> RetrieveLinksFromResponse(string responseBody, string regexToExtractLinks)
         {
-            var matches = Regex.Matches(responseBody, regexToExtractLinks);
+            var matches = Regex.Matches(responseBody, $"{regexToExtractLinks}");
             return matches.Select(x => x.Value).ToList();
         }
     }

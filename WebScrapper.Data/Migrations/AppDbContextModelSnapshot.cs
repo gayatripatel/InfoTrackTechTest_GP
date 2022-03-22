@@ -49,6 +49,24 @@ namespace WebScrapper.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("SearchEngines");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            BaseUrl = "http://www.google.co.uk",
+                            ResultExtractionExpression = "gMi0 kCrYT(.+?)sa=U&ved=",
+                            SearchUrl = "search?q=#SearchText#&num=#NumberResultsToSearchIn#",
+                            Title = "Google"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            BaseUrl = "http://www.bing.com",
+                            ResultExtractionExpression = "((<cite>)(.+?)(</cite>))",
+                            SearchUrl = "search?q=#SearchText#",
+                            Title = "Bing"
+                        });
                 });
 
             modelBuilder.Entity("WebScrapper.Data.Models.SearchResults", b =>
